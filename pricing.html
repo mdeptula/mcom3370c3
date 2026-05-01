@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - Kamo's Catering</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <script>
+    fetch('assets/html/header.html')
+        .then(res => res.text())
+        .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+        initializeHamburgerMenu();
+        });
+    
+    function initializeHamburgerMenu() {
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navMenu = document.getElementById('nav-menu');
+        const submenuParents = document.querySelectorAll('.submenu-parent');
+        
+        if (hamburgerBtn) {
+            hamburgerBtn.addEventListener('click', () => {
+                hamburgerBtn.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburgerBtn.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+            
+            submenuParents.forEach(parent => {
+                const link = parent.querySelector('a');
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 860) {
+                        e.preventDefault();
+                        parent.classList.toggle('active');
+                    }
+                });
+            });
+        }
+    }
+    </script>
+
+    <main class="main-content">
+        <section class="pricing-hero hero">
+            <div class="hero-inner">
+                <p class="eyebrow">Transparent Pricing</p>
+                <h1>Our Catering Rates</h1>
+                <p>Bold flavors don't have to break the bank. Simple, straightforward pricing for events of any size.</p>
+            </div>
+        </section>
+
+        <section class="pricing-container">
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3 class="pricing-tier">Intimate Gatherings</h3>
+                    <p class="pricing-scale">Up to 50 guests</p>
+                    <div class="pricing-breakdown">
+                        <div class="pricing-line">
+                            <span>Event Fee</span>
+                            <span class="pricing-amount">$150</span>
+                        </div>
+                        <div class="pricing-line">
+                            <span>Per Person</span>
+                            <span class="pricing-amount">$22/person</span>
+                        </div>
+                        <div class="pricing-line pricing-total">
+                            <span>Example: 30 guests</span>
+                            <span class="pricing-amount">$810</span>
+                        </div>
+                    </div>
+                    <p class="pricing-description">Perfect for small family gatherings, intimate celebrations, and exclusive events.</p>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Most Popular</div>
+                    <h3 class="pricing-tier">Standard Events</h3>
+                    <p class="pricing-scale">51-150 guests</p>
+                    <div class="pricing-breakdown">
+                        <div class="pricing-line">
+                            <span>Event Fee</span>
+                            <span class="pricing-amount">$250</span>
+                        </div>
+                        <div class="pricing-line">
+                            <span>Per Person</span>
+                            <span class="pricing-amount">$18/person</span>
+                        </div>
+                        <div class="pricing-line pricing-total">
+                            <span>Example: 100 guests</span>
+                            <span class="pricing-amount">$2,050</span>
+                        </div>
+                    </div>
+                    <p class="pricing-description">Ideal for weddings, birthday parties, and corporate events of moderate size.</p>
+                </div>
+
+                <div class="pricing-card">
+                    <h3 class="pricing-tier">Large Celebrations</h3>
+                    <p class="pricing-scale">150+ guests</p>
+                    <div class="pricing-breakdown">
+                        <div class="pricing-line">
+                            <span>Event Fee</span>
+                            <span class="pricing-amount">$400</span>
+                        </div>
+                        <div class="pricing-line">
+                            <span>Per Person</span>
+                            <span class="pricing-amount">$15/person</span>
+                        </div>
+                        <div class="pricing-line pricing-total">
+                            <span>Example: 200 guests</span>
+                            <span class="pricing-amount">$3,400</span>
+                        </div>
+                    </div>
+                    <p class="pricing-description">Perfect for large celebrations, charity events, and grand corporate functions.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing-details">
+            <h2>What's Included</h2>
+            <div class="pricing-features">
+                <div class="feature-group">
+                    <h4>All Packages Include:</h4>
+                    <ul>
+                        <li>Menu consultation and customization</li>
+                        <li>Scratch-made dishes prepared fresh for your event</li>
+                        <li>Professional service team</li>
+                        <li>Setup and table service</li>
+                        <li>Cleanup and takedown</li>
+                        <li>Dietary accommodation support</li>
+                    </ul>
+                </div>
+                <div class="feature-group">
+                    <h4>Optional Add-Ons:</h4>
+                    <ul>
+                        <li>Premium cocktail pairings - $8/person</li>
+                        <li>Dessert packages - $4-6/person</li>
+                        <li>Bar service - $300 setup fee + $2/drink</li>
+                        <li>Premium service upgrade - $25/person</li>
+                        <li>Late event surcharge (after 10 PM) - 15%</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing-cta">
+            <h2>Ready to book your event?</h2>
+            <p>Contact us for a custom quote, menu options, and available dates.</p>
+            <a class="cover-btn" href="/contact.html">Request a Quote</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Kamo's Catering</p>
+    </footer>
+</body>
+</html>
