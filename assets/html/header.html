@@ -5,27 +5,57 @@
         <span></span>
     </button>
     <ul class="nav-menu" id="nav-menu">
-        <li><a href="/">Home</a></li>
+        <li><a href="index.html" class="nav-link">Home</a></li>
         <li class="submenu-parent">
-            <a href="/menu.html">Menu</a>
+            <a href="menu.html" class="nav-link">Menu</a>
             <ul class="submenu">
-                <li><a href="/menu.html#appetizers">Appetizers</a></li>
-                <li><a href="/menu.html#entrees">Entrées</a></li>
-                <li><a href="/menu.html#sides">Sides</a></li>
-                <li><a href="/menu.html#desserts">Desserts</a></li>
+                <li><a href="menu.html#appetizers" class="nav-link">Appetizers</a></li>
+                <li><a href="menu.html#entrees" class="nav-link">Entrées</a></li>
+                <li><a href="menu.html#sides" class="nav-link">Sides</a></li>
+                <li><a href="menu.html#desserts" class="nav-link">Desserts</a></li>
             </ul>
         </li>
-        <li><a href="/pricing.html">Pricing</a></li>
-        <li><a href="/testimonials.html">Testimonials</a></li>
+        <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+        <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
         <li class="submenu-parent">
-            <a href="/about.html">Who We Are</a>
+            <a href="about.html" class="nav-link">Who We Are</a>
             <ul class="submenu">
-                <li><a href="/about/ourstory.html">Our Story</a></li>
-                <li><a href="/about/faq.html">FAQ</a></li>
-                <li><a href="/about/partners.html">Partners</a></li>
-                <li><a href="/about/gallery.html">Gallery</a></li>
+                <li><a href="about/ourstory.html" class="nav-link">Our Story</a></li>
+                <li><a href="about/faq.html" class="nav-link">FAQ</a></li>
+                <li><a href="about/partners.html" class="nav-link">Partners</a></li>
+                <li><a href="about/gallery.html" class="nav-link">Gallery</a></li>
             </ul>
         </li>
-        <li><a href="/contact.html">Contact</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
     </ul>
 </header>
+
+<script>
+// Fix relative paths for pages in subdirectories
+function fixNavPaths() {
+    const isInSubdir = window.location.pathname.includes('/about/');
+    if (isInSubdir) {
+        document.querySelectorAll('a.nav-link').forEach(link => {
+            const href = link.getAttribute('href');
+            // Add ../ prefix only if it's not already there and not a hash link
+            if (href && !href.startsWith('../') && !href.startsWith('http') && href !== 'index.html') {
+                if (href.includes('#')) {
+                    const [path, hash] = href.split('#');
+                    link.setAttribute('href', '../' + path + '#' + hash);
+                } else {
+                    link.setAttribute('href', '../' + href);
+                }
+            } else if (href === 'index.html') {
+                link.setAttribute('href', '../index.html');
+            }
+        });
+    }
+}
+
+// Run on load
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', fixNavPaths);
+} else {
+    fixNavPaths();
+}
+</script>
