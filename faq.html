@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ - Kamo's Catering</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="header-placeholder"></div>
 
     <script>
-    fetch('../assets/html/header.html')
+    fetch('assets/html/header.html')
         .then(res => res.text())
         .then(html => {
         document.getElementById('header-placeholder').innerHTML = html;
