@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Kamo's Catering</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <script>
+    fetch('../assets/html/header.html')
+        .then(res => res.text())
+        .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+        initializeHamburgerMenu();
+        });
+    
+    function initializeHamburgerMenu() {
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navMenu = document.getElementById('nav-menu');
+        const submenuParents = document.querySelectorAll('.submenu-parent');
+        
+        if (hamburgerBtn) {
+            hamburgerBtn.addEventListener('click', () => {
+                hamburgerBtn.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburgerBtn.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+            
+            submenuParents.forEach(parent => {
+                const link = parent.querySelector('a');
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 860) {
+                        e.preventDefault();
+                        parent.classList.toggle('active');
+                    }
+                });
+            });
+        }
+    }
+    </script>
+
+    <main class="main-content">
+        <section class="hero">
+            <div class="hero-inner">
+            <p class="eyebrow">Common Questions</p>
+            <h1>Frequently Asked Questions</h1>
+            <p>Everything you need to know about booking Kamo's Catering for your event.</p>
+            </div>
+        </section>
+
+        <div class="about-body">
+
+            <div class="about-block">
+            <h2>How far in advance should I book?</h2>
+            <p>We recommend booking at least 4-6 weeks in advance to ensure availability and allow time for menu planning and customization. However, we understand that plans change—reach out even if you're looking for something sooner. We do our best to accommodate rush requests based on our current schedule.</p>
+            </div>
+
+            <div class="about-block">
+            <h2>Can you customize the menu for dietary restrictions?</h2>
+            <p>Absolutely. We take dietary needs seriously and are happy to work with you to create a menu that works for your guests. Whether it's vegetarian options, allergies, or other restrictions, let us know during planning and we'll craft solutions that don't compromise on flavor.</p>
+            </div>
+
+            <div class="about-divider"></div>
+
+            <div class="about-block">
+            <h2>What's the minimum number of guests?</h2>
+            <p>We typically work with events of 30 guests or more. That said, we're flexible—reach out and tell us about your event. Depending on the occasion and what you're looking for, we may be able to make arrangements for smaller gatherings. Special cases are worth discussing.</p>
+            </div>
+
+            <div class="about-block">
+            <h2>Do you handle setup and cleanup?</h2>
+            <p>Yes, we handle service setup including plating, serving, and cleanup. Whether you need full-service catering with our team on-site or just the food delivery for you to serve, we can customize the service level to fit your event and venue needs.</p>
+            </div>
+
+            <div class="about-divider"></div>
+
+            <div class="about-block">
+            <h2>What's your service area?</h2>
+            <p>We primarily serve the greater Tyler area and surrounding communities. Venue location and travel distance may affect catering costs and availability. Contact us with your event location and we'll let you know if we can serve you and discuss any logistics involved.</p>
+            </div>
+
+            <div class="about-divider"></div>
+
+            <div class="about-cta-wrap">
+            <p>Have a question that's not listed here? Reach out directly—we're happy to help with any inquiries about booking your event.</p>
+            <a class="cover-btn" href="../contact.html">Get in Touch</a>
+            </div>
+            
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Kamo's Catering</p>
+    </footer>
+</body>
+</html>

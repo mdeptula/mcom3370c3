@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story - Kamo's Catering</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <script>
+    fetch('../assets/html/header.html')
+        .then(res => res.text())
+        .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+        initializeHamburgerMenu();
+        });
+    
+    function initializeHamburgerMenu() {
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navMenu = document.getElementById('nav-menu');
+        const submenuParents = document.querySelectorAll('.submenu-parent');
+        
+        if (hamburgerBtn) {
+            hamburgerBtn.addEventListener('click', () => {
+                hamburgerBtn.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburgerBtn.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+            
+            submenuParents.forEach(parent => {
+                const link = parent.querySelector('a');
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 860) {
+                        e.preventDefault();
+                        parent.classList.toggle('active');
+                    }
+                });
+            });
+        }
+    }
+    </script>
+
+    <main class="main-content">
+        <section class="ourstory-hero hero">
+            <div class="hero-inner">
+                <p class="eyebrow">Our Heritage</p>
+                <h1>Our Story</h1>
+                <p>Discover the journey behind Kamo's bold Cajun flavors and our passion for bringing people together.</p>
+            </div>
+        </section>
+
+        <div style="max-width: 900px; margin: 0 auto; padding: 6rem var(--horizontal-padding);">
+            <h2 class="menu-section-title">The Kamo's Story</h2>
+            
+            <p style="font-size: 0.95rem; font-weight: 300; color: rgba(240,236,227,0.72); line-height: 1.85; margin-bottom: 1.5rem;">
+                Kamo's Kajun Grill was born from a simple desire: to bring authentic, bold Cajun flavors to our community and create a gathering place where great food brings people together. What started as a vision has grown into more than just a restaurant—it's become a culinary tradition.
+            </p>
+
+            <p style="font-size: 0.95rem; font-weight: 300; color: rgba(240,236,227,0.72); line-height: 1.85; margin-bottom: 1.5rem;">
+                Every dish at Kamo's is crafted with intention. Our recipes honor the rich culinary heritage of Louisiana, passed down and perfected through careful attention to detail. From our slow-cooked gumbos that simmer for hours to our perfectly spiced crawfish étouffée, each plate tells a story of tradition, quality, and respect for the craft. We believe that great food starts with great ingredients and ends with great care.
+            </p>
+
+            <p style="font-size: 0.95rem; font-weight: 300; color: rgba(240,236,227,0.72); line-height: 1.85; margin-bottom: 1.5rem;">
+                At the heart of our operation is a Christ-centered philosophy—we approach our business with integrity, gratitude, and a genuine desire to serve. This values-driven approach extends beyond our kitchen walls. When we bring Kamo's to your event, we're not just providing catering; we're bringing our passion, our expertise, and our commitment to making your celebration unforgettable.
+            </p>
+
+            <p style="font-size: 0.95rem; font-weight: 300; color: rgba(240,236,227,0.72); line-height: 1.85; margin-bottom: 1.5rem;">
+                Our catering service emerged because we realized that the magic of Kamo's—that special combination of bold flavors, warm hospitality, and quality service—shouldn't be limited to our dining room. Weddings, corporate events, birthday celebrations, family reunions—whatever the occasion, we wanted to be there, bringing the full Kamo's experience directly to you.
+            </p>
+
+            <p style="font-size: 0.95rem; font-weight: 300; color: rgba(240,236,227,0.72); line-height: 1.85; margin-bottom: 1.5rem;">
+                Today, when you choose Kamo's Catering, you're choosing more than just exceptional food. You're choosing a team that understands that events are about people, connection, and creating memories. You're choosing decades of culinary expertise, scratch-made recipes, and a team that genuinely cares about the success of your celebration. From our first consultation to the last guest's departing handshake, you'll experience the Kamo's difference.
+            </p>
+
+            <p style="font-size: 0.95rem; font-weight: 300; color: rgba(240,236,227,0.72); line-height: 1.85;">
+                This is our story—one of passion, quality, and the belief that great food brings people together. We'd be honored to be part of your next celebration.
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Kamo's Catering</p>
+    </footer>
+</body>
+</html>

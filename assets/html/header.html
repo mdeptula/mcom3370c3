@@ -1,7 +1,12 @@
 <header>
-    <ul class="nav-menu">
+    <button class="hamburger" id="hamburger-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <ul class="nav-menu" id="nav-menu">
         <li><a href="index.html">Home</a></li>
-        <li>
+        <li class="submenu-parent">
             <a href="menu.html">Menu</a>
             <ul class="submenu">
                 <li><a href="menu.html#appetizers">Appetizers</a></li>
@@ -11,9 +16,12 @@
             </ul>
         </li>
         <li><a href="testimonials.html">Testimonials</a></li>
-        <li>
-            <a href="about.html">About</a>
+        <li class="submenu-parent">
+            <a href="about.html">Who We Are</a>
             <ul class="submenu">
+                <li><a href="about/ourstory.html">Our Story</a></li>
+                <li><a href="about/faq.html">FAQ</a></li>
+                <li><a href="about/partners.html">Partners</a></li>
                 <li><a href="about/gallery.html">Gallery</a></li>
             </ul>
         </li>
